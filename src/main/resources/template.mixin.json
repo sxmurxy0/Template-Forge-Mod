@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "dev.sxmurxy.template.mixins",
+	"minVersion": "0.8",
+	"compatibilityLevel": "JAVA_8",
+	"mixins":[
+	
+	],
+	"injectors": {
+		"defaultRequire" : 1
+	},
+	"refmap": "template.mixin-refmap.json"
+}
