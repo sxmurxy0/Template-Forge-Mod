@@ -1,0 +1,40 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+    id 'eclipse'
+}
+
+// it can be configured in gradle.properties file
+version = project.mod_version
+group = project.maven_group
+archivesBaseName = project.archives_base_name
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17) // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+
+minecraft {
+	// mappings
+    mappings channel: 'official', version: '1.19.4'
+
+    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg') // Currently, this location cannot be changed from the default.
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+        }
+    }
+}
+
+mixin {
+  	config project.mixin_config // see gradle.properties file
+  	add sourceSets.main, 'template.mixin-refmap.json'
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.19.4-45.0.66'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
