@@ -40,7 +40,7 @@ minecraft {
 
 mixin {
 	config project.mixin_config
-    add sourceSets.main, 'template.mixin-refmap.json' // should be the same as in your mixin config
+    add sourceSets.main, project.mixin_refmap
 }
 
 repositories {
