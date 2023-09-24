@@ -31,7 +31,7 @@ minecraft {
 
 mixin {
   	config project.mixin_config // see gradle.properties file
-  	add sourceSets.main, 'template.mixin-refmap.json' // should be the same as in your mixin config file
+  	add sourceSets.main, project.mixin_refmap
 }
 
 dependencies {
