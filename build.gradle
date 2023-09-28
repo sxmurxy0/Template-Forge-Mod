@@ -35,6 +35,14 @@ mixin {
   	add sourceSets.main, project.mixin_refmap
 }
 
+repositories {
+    mavenCentral()
+    maven {
+        name = "Minecraft Forge"
+        url = "https://files.minecraftforge.net/maven"
+    }
+}
+
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.34'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
